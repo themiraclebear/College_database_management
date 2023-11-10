@@ -1,0 +1,56 @@
+- Average Marks
+CREATE PROCEDURE Average_marks_stud
+@roll_num INT, 
+@date INT, 
+@Average_marks INT OUT
+AS
+BEGIN
+	SET NOCOUNT ON;
+	SELECT @Average_marks = AVG(marks.marks)
+	FROM marks 
+	JOIN subjects ON marks.subject_id = subjects.id
+	WHERE marks.student_roll_num = @roll_num
+	AND marks.subject_id IN (
+		SELECT subjects.id 
+		FROM subjects 
+		JOIN students ON subjects.department_id = students.department_id
+		WHERE subjects.sub_start_date < @date 
+		AND subjects.sub_end_date > @date 
+		AND students.roll_num = @roll_num
+	);
+    
+    INSERT INTO Average_Marks_Table (Roll_Num, Average_Marks)
+    VALUES (@roll_num, @Average_marks);
+	SET NOCOUNT OFF;
+END
+	
+
+create table Average_Marks_Table(Roll_Num int, Average_Marks int)
+
+DECLARE @Average_marks int;
+EXEC Average_marks_stud 170101, 420, @Average_marks OUTPUT;
+
+select * from marks
+
+-- Inserting Marks
+CREATE PROCEDURE insert_marks 
+  @s_id INT,
+  @s_roll_num INT,
+  @m INT,
+  @num int out as
+BEGIN
+  SELECT @num = count(*)
+  FROM marks
+  WHERE subject_id = @s_id AND student_roll_num = @s_roll_num;
+  IF @num = 0
+  BEGIN
+    INSERT INTO marks (student_roll_num, subject_id, marks)
+    VALUES (@s_roll_num, @s_id, @m);
+  END
+  ELSE
+  BEGIN
+    UPDATE marks
+    SET marks = @m
+    WHERE student_roll_num = @s_roll_num AND subject_id = @s_id;
+  END
+END

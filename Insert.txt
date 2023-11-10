@@ -1,0 +1,40 @@
+INSERT INTO faculty (id, first_name, last_name, department_id, phone) VALUES
+(1, 'Manisha', 'Marathe', 1, '9845167849'),
+(2, 'Anil', 'Bhadgale', 1, '7785461895'),
+(3, 'Vijayalakshmi', 'Kanade', 1, '8983547891'),
+(4, 'Adityakumar', 'Dongare', 1, '9890451786'),
+(5, 'Shubhangi', 'Dixit', 3, '9422185769'),
+(6, 'Minal', 'Apsangi', 3, '7704159854');
+
+INSERT INTO marks (id, student_roll_num, subject_id, marks) VALUES
+(1, 170101, 1, 80),
+(2, 170101, 6, 70),
+(3, 170101, 4, 90),
+(4, 170101, 2, 80),
+(5, 170102, 1, 80),
+(6, 170102, 6, 80),
+(7, 170102, 5, 90),
+(8, 170102, 2, 80),
+(9, 180101, 3, 70),
+(10, 180102, 3, 73),
+(11, 180103, 3, 80);
+
+INSERT INTO students (roll_num, first_name, last_name, department_id, phone, admission_date, cet_marks) VALUES
+(170101, 'Vinod', 'Kamat', 1, '7474986413', '2017-08-01', 107),
+(170102, 'Adwait', 'Bhope', 1, '8862451783', '2017-08-01', 113),
+(170103, 'Aashay', 'Zanpure', 1, '9029742685', '2017-08-21', 140),
+(170104, 'Atharva', 'Dhekne', 1, '7093458923', '2017-08-21', 132),
+(170301, 'Rashmi', 'Mokashi', 3, '9552514865', '2017-08-01', 125),
+(180101, 'Shivam', 'Rajput', 1, '7415487529s', '2017-08-21', 141),
+(180102, 'Sunanda', 'Somwase', 1, '9423165742', '2017-08-21', 130),
+(180103, 'Sagar', 'Patil', 1, '9545791532', '2017-08-21', 150),
+(180104, 'Shreya', 'Gore', 1, '7093458923', '2017-08-21', 131);
+
+
+INSERT INTO subjects (id, department_id, start_date, end_date, name, faculty_id) VALUES
+(1, 1, 360, 540, 'Object Oriented Programming', 1),
+(2, 1, 360, 540, 'Discrete Mathematics', 2),
+(3, 1, 540, 720, 'Computer Graphics', 2),
+(4, 1, 720, 900, 'Database Management Systems', 3),
+(5, 1, 360, 540, 'Digital Electronics And Login Design', 4),
+(6, 1, 360, 540, 'Computer Organization and Architecture', 4);
